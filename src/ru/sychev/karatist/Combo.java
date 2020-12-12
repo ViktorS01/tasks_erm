@@ -1,25 +1,27 @@
-package ru.sychev.other;
-
+package ru.sychev.karatist;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class Combo implements Karate {
-    public List<Karate> = new ArrayList<>();
-    public Combo (Karate...karate){
-        karate.
+public class Combo{
+    private String name;
+    private List<Karate> hits = new ArrayList<>();
+
+    public Combo(String name, Karate...hits){
+        this.name = name;
+        this.hits.addAll(Arrays.asList(hits));
     }
 
-    @Override
-    public void foot() {
-
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void hand() {
-
+    public Combo setName(String name) {
+        this.name = name;
+        return this;
     }
 
-    @Override
-    public void footInAJump() {
-
+    public List<Karate> getHits() {
+        return hits;
     }
 }

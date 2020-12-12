@@ -1,7 +1,5 @@
-package ru.sychev.other;
+package ru.sychev.karatist;
 
 public interface Karate {
-    public void foot();
-    public void hand();
-    public void footInAJump();
+    default void hit(){};
 }

@@ -1,21 +1,37 @@
-package ru.sychev.other;
+package ru.sychev.karatist;
 
-public class BabyKaratist implements Karate{
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class BabyKaratist {
     String name;
+    List<Combo> comboList= new ArrayList<>();
 
-    BabyKaratist(String name){
+    public BabyKaratist(String name){
         this.name = name;
     }
 
-    public void hand (){
-        System.out.println("КИЯ!!!");
+    public BabyKaratist(String name, Combo... c){
+        this.name = name;
+        setCombo (c);
     }
 
-    public void foot (){
-        System.out.println("AAAAAAAAAAA!");
+    public void setCombo (Combo...c){
+        comboList.addAll(Arrays.asList(c));
     }
 
-    public void footInAJump (){
-        System.out.println("ПОЛУЧАЙ!");
+    public String getName() {
+        return name;
+    }
+
+    public List<Combo> getComboList() {
+        return comboList;
+    }
+
+    @Override
+    public String toString(){
+        return name;
     }
 }

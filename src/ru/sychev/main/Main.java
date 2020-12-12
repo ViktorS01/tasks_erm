@@ -3,6 +3,7 @@ import ru.sychev.animals.Bird;
 import ru.sychev.animals.Sparrow;
 import ru.sychev.geometry.*;
 import ru.sychev.geometry.newPoint.MoveAll;
+import ru.sychev.karatist.*;
 import ru.sychev.music.Album;
 import ru.sychev.music.Author;
 import ru.sychev.music.MusicalTrack;
@@ -157,6 +158,15 @@ public class Main {
         MoveAll group3 = new MoveAll(group1,group2);
         group3.move(-2,5);
         System.out.println(group3);
+
+
+        Punch punch = new Punch();
+        Kick kick = new Kick();
+        KickJump kickJump = new KickJump();
+        Combo combo1 = new Combo("combo1", punch, kick, kickJump);
+        BabyKaratist baby = new BabyKaratist("Петя", combo1);
+        System.out.println(baby);
+
     }
 
     public static double sum (SumStr sumstr, Number...numbers){

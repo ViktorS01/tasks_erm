@@ -31,28 +31,28 @@ public class Student <T> {
         }
     }
 
-        public static  int getAverage ( int[] rating){
-            int average;
-            int num = 0;
-            int count = 0;
-            for (int i = 0; i < rating.length; i++) {
-                num += rating[i];
-                count++;
-            }
-            average = num / count;
-            return average;
-        }
-
-        public String excellent_student_check (int[] rating) {
-            if (rating == null) return "";
-            for (int i = 0; i < rating.length;) {
-                if (rating[i] == 5){
-                    i++;
-                }
-                else{
-                    return "";
-                }
-            }
-            return " - Отличник";
-        }
+//        public static  int getAverage ( int[] rating){
+//            int average;
+//            int num = 0;
+//            int count = 0;
+//            for (int i = 0; i < rating.length; i++) {
+//                num += rating[i];
+//                count++;
+//            }
+//            average = num / count;
+//            return average;
+//        }
+//
+//        public String excellent_student_check (int[] rating) {
+//            if (rating == null) return "";
+//            for (int i = 0; i < rating.length;) {
+//                if (rating[i] == 5){
+//                    i++;
+//                }
+//                else{
+//                    return "";
+//                }
+//            }
+//            return " - Отличник";
+//        }
 }

@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Combo{
     private String name;
-    private List<Karate> hits = new ArrayList<>();
+    private List<Hit> hits = new ArrayList<>();
 
-    public Combo(String name, Karate...hits){
+    public Combo(String name, Hit...hits){
         this.name = name;
         this.hits.addAll(Arrays.asList(hits));
     }
@@ -21,7 +21,13 @@ public class Combo{
         return this;
     }
 
-    public List<Karate> getHits() {
+    public void execute (BabyKaratist babyKaratist){
+        for (Hit h: hits){
+            h.hit(babyKaratist);
+        }
+    }
+
+    public List<Hit> getHits() {
         return hits;
     }
 }

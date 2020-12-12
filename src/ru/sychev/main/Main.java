@@ -160,12 +160,9 @@ public class Main {
         System.out.println(group3);
 
 
-        Punch punch = new Punch();
-        Kick kick = new Kick();
-        KickJump kickJump = new KickJump();
-        Combo combo1 = new Combo("combo1", punch, kick, kickJump);
-        BabyKaratist baby = new BabyKaratist("Петя", combo1);
-        System.out.println(baby);
+        BabyKaratist baby = new BabyKaratist("Петя");
+        Combo combo1 = new Combo("combo1", baby2 -> baby2.kick(), AsHit.getAsHit());
+        combo1.execute(baby);
 
     }
 

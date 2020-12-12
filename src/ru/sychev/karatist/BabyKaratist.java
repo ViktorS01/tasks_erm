@@ -13,17 +13,16 @@ public class BabyKaratist {
         this.name = name;
     }
 
-    public BabyKaratist(String name, Combo... c){
-        this.name = name;
-        setCombo (c);
-    }
-
     public void setCombo (Combo...c){
         comboList.addAll(Arrays.asList(c));
     }
 
     public String getName() {
         return name;
+    }
+
+    public void kick (){
+        System.out.println("Тыц!");
     }
 
     public List<Combo> getComboList() {

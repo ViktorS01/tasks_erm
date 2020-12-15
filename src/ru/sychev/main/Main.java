@@ -26,6 +26,7 @@ import static java.lang.Integer.parseInt;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
@@ -163,6 +164,44 @@ public class Main {
         BabyKaratist baby = new BabyKaratist("Петя");
         Combo combo1 = new Combo("combo1", baby2 -> baby2.kick(), AsHit.getAsHit());
         combo1.execute(baby);
+
+
+//        System.out.println("*********************");
+//        Object x = new Integer(2);
+//
+//        Stack st = new Stack();
+//        st.push(2);
+//        st.push("3");
+//        st.push(new Integer(4));
+//        System.out.println(st);
+//        st.pop();
+//        System.out.println(st);
+//        x = st.peek();
+//        System.out.print("x = ");
+//        System.out.println(x);
+//
+        System.out.println("*********************");
+        Checker checker = new Checker() {
+            @Override
+            public boolean check(Object o) {
+                return true;
+            }
+        };
+        List rate = new ArrayList();
+        Student student = new Student("Petya", rate, checker);
+        System.out.println(student);
+        student.addRating(2);
+        System.out.println(student);
+        student.addRating(5);
+        System.out.println(student);
+        student.addRating(4);
+        System.out.println(student);
+        student.undo();
+        System.out.println(student);
+        student.undo();
+        System.out.println(student);
+        student.undo();
+        System.out.println(student);
 
     }
 

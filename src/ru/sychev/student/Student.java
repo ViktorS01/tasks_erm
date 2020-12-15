@@ -1,34 +1,56 @@
 package ru.sychev.student;
 
+import ru.sychev.geometry.Point;
+
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
 
-public class Student <T> {
-    String name;
-    T[]  rating;
-    Checker<T> ch;
+public class Student <T>{
+    private String name;
+    private Checker<T> ch;
+    private Stack forRating = new Stack();
 
-    public Student(String name, T[] rating, Checker<T> ch) {
+
+    public Student(String name, List rating, Checker<T> ch) {
         this.ch = ch;
         this.name = name;
         setRating(rating, ch);
     }
 
-    public void setRating(T[] rating, Checker<T> ch) {
-        for (int i = 0; i < rating.length; i++)
-        if (!ch.check(rating[i])) throw new IllegalArgumentException("incorrect rating");
-        this.rating = rating;
+    public Student(String name){
+        this.name = name;
     }
 
-    public String getRating() {
-        return Arrays.toString(rating);
+    public Student(){}
+
+    public void setRating(List<T> rating, Checker<T> ch) {
+        for (int i = 0; i < rating.size(); i++) {
+            if (!ch.check(rating.get(i))) throw new IllegalArgumentException("incorrect rating");
+            forRating.push(rating);
+        }
+    }
+
+    public void addRating (T...rating){
+        for(T p: rating)
+            this.forRating.push(p);
+    }
+
+    public Stack getRating() {
+        return forRating;
     }
 
     public String toString() {
-        if (this.rating == null) {
+        if (this.forRating.empty() == true) {
             return this.name + ": Средняя оценка: 0";
         } else {
-            return this.name + ": " + Arrays.toString(rating) + ", "+ "Средняя оценка: ";// + getAverage(rating) + excellent_student_check(rating);
+            return this.name + ": " + forRating.toString(); //+ ", "+ "Средняя оценка: ";// + getAverage(rating) + excellent_student_check(rating);
         }
+    }
+
+    public  void undo(){
+        forRating.pop();
     }
 
 //        public static  int getAverage ( int[] rating){

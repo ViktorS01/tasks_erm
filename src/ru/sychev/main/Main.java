@@ -3,6 +3,7 @@ import ru.sychev.animals.Bird;
 import ru.sychev.animals.Sparrow;
 import ru.sychev.geometry.*;
 import ru.sychev.geometry.newPoint.MoveAll;
+import ru.sychev.human.Human;
 import ru.sychev.karatist.*;
 import ru.sychev.music.Album;
 import ru.sychev.music.Author;
@@ -202,6 +203,12 @@ public class Main {
         System.out.println(student);
         student.undo();
         System.out.println(student);
+        System.out.println("*********************");
+
+        Human.NameBuilder nb = Human.getNameBuilder();
+        Human m = nb.setName("Петя").setPatronymic("Иванович").setSurname("Иванов").getName();
+
+
 
     }
 

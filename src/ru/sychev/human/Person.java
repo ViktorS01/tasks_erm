@@ -15,8 +15,9 @@ public class Person {
     }
 
     public Person (String name, int height){
-        this(null, new Human(name, null,null), height);
+        this(null, Human.getNameBuilder().setName(name).getName(), height);
     }
+
 
     public Person (Person father, String name, int height){
         this(father, new Human(name, null,null), height);

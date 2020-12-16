@@ -2,16 +2,16 @@ package ru.sychev.student;
 
 import ru.sychev.geometry.Point;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class Student <T>{
     private String name;
     private Checker<T> ch;
+    private List rates = new ArrayList();
+
     private Stack forRating = new Stack();
 
+    private Deque <Action> hist = new ArrayDeque<>();
 
     public Student(String name, List rating, Checker<T> ch) {
         this.ch = ch;
@@ -51,6 +51,25 @@ public class Student <T>{
 
     public  void undo(){
         forRating.pop();
+    }
+
+    private class Memento implements Save{
+        String name;
+        List<Integer> arr;
+
+        public Memento (String name, List arr){
+            this.name = name;
+            this.arr = new ArrayList(arr);
+        }
+
+        public void load (){
+            Student.this.name = name;
+            Student.this.rates = new ArrayList(arr);
+        }
+    }
+
+    public Memento saveState (){
+        return new Memento(name, rates);
     }
 
 //        public static  int getAverage ( int[] rating){

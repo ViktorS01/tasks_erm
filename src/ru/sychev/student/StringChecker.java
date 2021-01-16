@@ -1,4 +1,4 @@
-package ru.sychev.main;
+package ru.sychev.student;
 
 import ru.sychev.student.Checker;
 

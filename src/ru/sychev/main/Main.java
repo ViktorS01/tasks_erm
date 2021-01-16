@@ -26,12 +26,13 @@ import static java.lang.Math.pow;
 import static java.lang.Integer.parseInt;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        /*
+
         //11.1
         System.out.println(sum(2,3,4,1));
         //11.2
@@ -51,16 +52,16 @@ public class Main {
                 Cat ar = new Cat("Vasya");
                 CalMeow cal = new CalMeow(ar);
                 System.out.println(cal.getResMeow());
-        /*
+
         //12.3
                 System.out.println(sum(7, new Fraction(11, 3), new BigInteger("12345678912345678912"),
                 5, 3.21));
-        */
+
         //11.5
-        //        Line line = new Line(new Point(1,2),new Point(3,4));
-        //        ClosedLine cl = new ClosedLine(new Point(1,2),new Point(3,4),new Point(3,4));
-        //        System.out.println(getLen(line,cl, new ImpLen ("sdsfds"), () -> "asd".length(), "dfdsf"::length));
-        /*
+                Line line = new Line(new Point(1,2),new Point(3,4));
+                ClosedLine cl = new ClosedLine(new Point(1,2),new Point(3,4),new Point(3,4));
+                System.out.println(getLen(line,cl, new ImpLen ("sdsfds"), () -> "asd".length(), "dfdsf"::length));
+
         //11.6
                 Sqare sq = new Sqare(new Point(1,2),5);
                 System.out.println(sq.getBrokenLine());
@@ -122,8 +123,12 @@ public class Main {
             Clonable.clone(fa,fb);
 
         //student
-        String[] x = {"ok", "not ok", "ok"};
-        Student<String> Tolyan = new Student<String>("Tolya", x,new StringChecker());
+        System.out.println("Tolya");
+        //String[] x = {"ok", "not ok", "ok"};
+        List <String> x = new ArrayList<>();
+        x = Arrays.asList("ok", "not ok", "ok");
+
+        Student<String> Tolyan = new Student<String>("Tolya", x, new StringChecker());
         System.out.println(Tolyan);
 
 
@@ -139,15 +144,15 @@ public class Main {
         System.out.println(reduce(list, (j, y)-> j + y));
 
         //4 задача
-        //SumStr sumString = new SumStr("12345");
-        //System.out.println(sum(sumString));
+        System.out.println("ADAPTER");
+        System.out.println(sum(new SumStr("123"),132));
 
         //5 задача - прокси
-        Cat br = new Cat("Bobby");
-        Cat ar = new Cat("Vasya");
-        CalMeow cal = new CalMeow(ar);
-        System.out.println(cal.getResMeow());
-        */
+        Cat brsa = new Cat("Bobby");
+        Cat aras = new Cat("Vasya");
+        CalMeow calas = new CalMeow(aras);
+        System.out.println(calas.getResMeow());
+
 
         Line line_1 = new Line(new Point(1,2),new Point(3,4));
         Line line_2 = new Line(new Point(1,2),new Point(3,4));
@@ -212,7 +217,7 @@ public class Main {
 
     }
 
-    public static double sum (SumStr sumstr, Number...numbers){
+    public static double sum (Number...numbers){
         double res = 0.0;
         for (Number x: numbers){
             res += x.doubleValue();

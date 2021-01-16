@@ -1,8 +1,9 @@
 package ru.sychev.main;
+
+
 import ru.sychev.animals.Bird;
 import ru.sychev.animals.Sparrow;
 import ru.sychev.geometry.*;
-import ru.sychev.geometry.newPoint.MoveAll;
 import ru.sychev.human.Human;
 import ru.sychev.karatist.*;
 import ru.sychev.music.Album;

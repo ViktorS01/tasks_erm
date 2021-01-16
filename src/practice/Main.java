@@ -1,6 +1,9 @@
 package practice;
 
 import practice.Adapter.*;
+import practice.Composite.Circle;
+import practice.Composite.CompoundGraphic;
+import practice.Composite.Dot;
 import practice.Decorator.*;
 
 public class Main {
@@ -31,6 +34,15 @@ public class Main {
 
         System.out.println(dataSource.readData());
         System.out.println(enc.readData());
+
+
+        Circle cir = new Circle(3,4,5);
+        Dot dot = new Dot(3,4);
+        CompoundGraphic cg = new CompoundGraphic();
+        cg.add(cir);
+        cg.add(dot);
+        cg.move(4,5);
+        System.out.println(cg.toString());
 
     }
 

@@ -1,5 +1,4 @@
 package ru.sychev.geometry;
-import ru.sychev.geometry.newPoint.Moveable;
 import ru.sychev.staticc.clonable.Clonable;
 import ru.sychev.staticc.len.Lenable;
 

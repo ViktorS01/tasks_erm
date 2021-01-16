@@ -1,4 +1,4 @@
-package ru.sychev.geometry.newPoint;
+package ru.sychev.geometry;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,5 +1,5 @@
 package ru.sychev.karatist;
-
+//одиночка
 public class AsHit implements Hit{
 
     private static AsHit f = new AsHit();

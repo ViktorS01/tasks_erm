@@ -1,8 +1,12 @@
 package practice;
 
 import practice.Crational.AbstractFactory.*;
+import practice.Crational.Builder.Car;
+import practice.Crational.Builder.CarBuilder;
+import practice.Crational.Builder.Director;
 import practice.Crational.FactoryMethod.Dialog;
 import practice.Crational.FactoryMethod.WindowsDialog;
+import practice.Crational.Point;
 import practice.Structure.Adapter.*;
 import practice.Structure.Composite.Circle;
 import practice.Structure.Composite.CompoundGraphic;
@@ -13,7 +17,7 @@ import ru.sychev.karatist.BabyKaratist;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         //Adapter
         System.out.println("ADAPTER");
         System.out.println(sum(new Adapter("123"), 132));
@@ -71,6 +75,19 @@ public class Main {
         GUIFactory guiFactory1 = new WinFactory();
         checkBox = guiFactory1.createCheckBox();
         checkBox.paint();
+
+        //Builder
+        CarBuilder carBuilder = new CarBuilder();
+        Director director = new Director();
+        director.makeSportsCar(carBuilder);
+        Car car = carBuilder.getResult();
+        System.out.println(car);
+
+        //Prototype (clone)
+        Point point = new Point(2,3);
+        Point point1 = point.clone();
+        System.out.println(point1.toString());
+
     }
 
     public static double sum(Number... numbers) {

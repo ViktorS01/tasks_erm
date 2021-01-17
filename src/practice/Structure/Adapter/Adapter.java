@@ -1,4 +1,4 @@
-package practice.Adapter;
+package practice.Structure.Adapter;
 
 public class Adapter extends Number{
         String str;

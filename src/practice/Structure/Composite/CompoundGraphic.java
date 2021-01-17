@@ -1,4 +1,4 @@
-package practice.Composite;
+package practice.Structure.Composite;
 
 import java.util.ArrayList;
 import java.util.List;

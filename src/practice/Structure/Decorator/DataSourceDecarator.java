@@ -1,4 +1,4 @@
-package practice.Decorator;
+package practice.Structure.Decorator;
 
 public class DataSourceDecarator implements DataSource{
     DataSource dataSource;

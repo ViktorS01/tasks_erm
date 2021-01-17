@@ -1,4 +1,4 @@
-package practice.Adapter;
+package practice.Structure.Adapter;
 
 public class SqarePeg {
     int width;

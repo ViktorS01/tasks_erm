@@ -1,4 +1,4 @@
-package practice.Proxy;
+package practice.Structure.Proxy;
 
 public interface Graphic {
     public void draw ();

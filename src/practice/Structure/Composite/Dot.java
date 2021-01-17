@@ -1,4 +1,4 @@
-package practice.Composite;
+package practice.Structure.Composite;
 
 public class Dot implements Graphic {
     int x;

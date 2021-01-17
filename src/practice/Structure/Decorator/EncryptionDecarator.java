@@ -1,4 +1,4 @@
-package practice.Decorator;
+package practice.Structure.Decorator;
 
 public class EncryptionDecarator extends DataSourceDecarator{
 

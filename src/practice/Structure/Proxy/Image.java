@@ -1,4 +1,4 @@
-package practice.Proxy;
+package practice.Structure.Proxy;
 
 import java.util.ArrayList;
 import java.util.List;

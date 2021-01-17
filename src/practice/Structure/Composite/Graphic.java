@@ -1,4 +1,4 @@
-package practice.Composite;
+package practice.Structure.Composite;
 
 public interface Graphic {
     public void move(int x,int y);

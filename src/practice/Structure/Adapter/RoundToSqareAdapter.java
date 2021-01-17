@@ -1,4 +1,4 @@
-package practice.Adapter;
+package practice.Structure.Adapter;
 
 import static java.lang.StrictMath.sqrt;
 

@@ -1,4 +1,4 @@
-package practice.Adapter;
+package practice.Structure.Adapter;
 
 public class RoundPeg {
     int radius;

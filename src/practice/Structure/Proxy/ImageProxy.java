@@ -1,7 +1,4 @@
-package practice.Proxy;
-
-import java.util.ArrayList;
-import java.util.List;
+package practice.Structure.Proxy;
 
 public class ImageProxy implements Graphic{
     int extent;

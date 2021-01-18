@@ -1,23 +1,29 @@
 package practice;
 
-import practice.Crational.AbstractFactory.*;
-import practice.Crational.Builder.Car;
-import practice.Crational.Builder.CarBuilder;
-import practice.Crational.Builder.Director;
-import practice.Crational.FactoryMethod.Dialog;
-import practice.Crational.FactoryMethod.WindowsDialog;
-import practice.Crational.Point;
+import practice.Behavioral.Command.*;
+import practice.Behavioral.Iterator.Classs;
+import practice.Behavioral.Iterator.Ork;
+import practice.Behavioral.Iterator.SimpleIterator;
+import practice.Creational.AbstractFactory.*;
+import practice.Creational.Builder.Car;
+import practice.Creational.Builder.CarBuilder;
+import practice.Creational.Builder.Director;
+import practice.Creational.FactoryMethod.Dialog;
+import practice.Creational.FactoryMethod.WindowsDialog;
+import practice.Creational.Clone.Point;
+import practice.Creational.Singleton.Singleton;
 import practice.Structure.Adapter.*;
 import practice.Structure.Composite.Circle;
 import practice.Structure.Composite.CompoundGraphic;
 import practice.Structure.Composite.Dot;
 import practice.Structure.Decorator.*;
 import practice.Structure.Facade.Facade;
-import ru.sychev.karatist.BabyKaratist;
 
 public class Main {
 
     public static void main(String[] args) throws CloneNotSupportedException {
+
+        //Structure pattern
         //Adapter
         System.out.println("ADAPTER");
         System.out.println(sum(new Adapter("123"), 132));
@@ -60,6 +66,7 @@ public class Main {
         Facade facade = new Facade();
         facade.onComp();
 
+        //Creational pattern
         //Factory Method
         Dialog dialog;
         dialog = new WindowsDialog();
@@ -87,6 +94,43 @@ public class Main {
         Point point = new Point(2,3);
         Point point1 = point.clone();
         System.out.println(point1.toString());
+
+        //Singleton
+        Singleton singleton = Singleton.getInstance("Data..");
+        singleton.getInstance("Data2");
+        System.out.println(singleton.getValue());
+
+        //Behavior pattern
+        //Command
+        Comp comp = new Comp();
+        Command power = new CommandPower(comp);
+        Command wot = new CommandOnWOT(comp);
+        Command mes = new CommandKostyaMes(comp);
+        User user = new User(mes,wot,power);
+
+        user.message();
+        user.WOT();
+        user.vkl();
+        CommandHistory history = new CommandHistory();
+        history.push(power);
+        history.push(power);
+        history.push(wot);
+        history.push(mes);
+        System.out.println(history.toString());
+
+        //iterator
+        Ork kostya = new Ork("Kostya");
+        Ork kostya2 = new Ork("Kostya2");
+        Ork kostya3 = new Ork("Kostya3");
+        Ork kostya4 = new Ork("Kostya4");
+        Ork kostya5 = new Ork("Kostya5");
+        Classs allKostya = new Classs(kostya, kostya2, kostya3, kostya4, kostya5);
+        SimpleIterator simpleIterator = new SimpleIterator(allKostya.getOrks());
+        while (simpleIterator.hasNext()){
+            simpleIterator.next();
+            System.out.println(simpleIterator.toString());
+        }
+
 
     }
 

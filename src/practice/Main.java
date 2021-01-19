@@ -4,6 +4,24 @@ import practice.Behavioral.Command.*;
 import practice.Behavioral.Iterator.Classs;
 import practice.Behavioral.Iterator.Ork;
 import practice.Behavioral.Iterator.SimpleIterator;
+import practice.Behavioral.Mediator.Admin;
+import practice.Behavioral.Mediator.Chat;
+import practice.Behavioral.Mediator.Userr;
+import practice.Behavioral.Memento.File;
+import practice.Behavioral.Memento.Game;
+import practice.Behavioral.Observer.Ermak.Alien;
+import practice.Behavioral.Observer.Ermak.Human;
+import practice.Behavioral.Observer.Ermak.Moon;
+import practice.Behavioral.Observer.MeteoStation;
+import practice.Behavioral.Observer.Reciver;
+import practice.Behavioral.State.Red;
+import practice.Behavioral.State.TrafficLights;
+import practice.Behavioral.Strategy.Strategy;
+import practice.Behavioral.Strategy.Sum;
+import practice.Behavioral.Strategy.Umn;
+import practice.Behavioral.TamplateMethod.A;
+import practice.Behavioral.TamplateMethod.B;
+import practice.Behavioral.TamplateMethod.C;
 import practice.Creational.AbstractFactory.*;
 import practice.Creational.Builder.Car;
 import practice.Creational.Builder.CarBuilder;
@@ -130,6 +148,75 @@ public class Main {
             simpleIterator.next();
             System.out.println(simpleIterator.toString());
         }
+
+        //memento
+        Game game = new Game();
+        game.setGame(120000, "Level_1");
+        System.out.println(game);
+
+        File file = new File(game.createMemento());
+        game.setGame(145000, "Level_4");
+
+        System.out.println(game);
+
+        game.setMemento(file.getMemento());
+        System.out.println(game);
+
+        //observer
+        Reciver reciver = new Reciver();
+        MeteoStation meteoStation = new MeteoStation();
+        meteoStation.add(reciver);
+        meteoStation.setMeteo(30, 145);
+
+        //observer - erm
+        Human human = new Human();
+        Alien alien = new Alien();
+        Moon moon = new Moon();
+        moon.add(human);
+        System.out.println("\n");
+        moon.add(alien);
+        System.out.println("\n");
+        moon.add(human);
+        System.out.println("\n");
+        moon.add(human);
+        System.out.println("\n");
+        moon.add(alien);
+        System.out.println("\n");
+        moon.add(human);
+
+        //mediator
+        Chat chat = new Chat();
+        Admin admin = new Admin(chat);
+        Userr userr1 = new Userr(chat);
+        Userr userr2 = new Userr(chat);
+        chat.addUsers(userr1,userr2);
+        chat.setAdmin(admin);
+
+        userr1.sendMessage("Салам, я юзер");
+        admin.sendMessage("Салам, я админ");
+
+        //TemplateMethod
+        C c = new A();
+        C c2 = new B();
+        c.tempMethod();
+        c2.tempMethod();
+
+        //State
+        TrafficLights trafficLights = new TrafficLights();
+        trafficLights.setColorLights(new Red());
+        for (int i = 0; i < 10; i++){
+            trafficLights.showColor();
+            trafficLights.nextColor();
+        }
+
+        //Strategy
+        Strategy strategy = new Strategy();
+        strategy.setMathOperation(new Sum());
+        System.out.println(strategy.operation(2.5,4.3));
+        strategy.setMathOperation(new Umn());
+        System.out.println(strategy.operation(2.3, 2.5));
+
+        //Visitor
 
 
     }

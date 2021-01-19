@@ -22,6 +22,7 @@ import practice.Behavioral.Strategy.Umn;
 import practice.Behavioral.TamplateMethod.A;
 import practice.Behavioral.TamplateMethod.B;
 import practice.Behavioral.TamplateMethod.C;
+import practice.Behavioral.Visitor.*;
 import practice.Creational.AbstractFactory.*;
 import practice.Creational.Builder.Car;
 import practice.Creational.Builder.CarBuilder;
@@ -217,6 +218,15 @@ public class Main {
         System.out.println(strategy.operation(2.3, 2.5));
 
         //Visitor
+        Visitor meh = new Worker();
+        Visitor walker = new Walker();
+        Element wheel = new Wheel();
+
+        wheel.accept(meh);
+        wheel.accept(walker);
+
+        Element carDet = new CarDetails();
+        carDet.accept(meh);
 
 
     }

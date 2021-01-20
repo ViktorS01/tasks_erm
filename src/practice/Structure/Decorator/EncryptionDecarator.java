@@ -6,17 +6,15 @@ public class EncryptionDecarator extends DataSourceDecarator{
         super(dataSource);
     }
 
-    @Override
-    public void writeData (String data){
-        super.writeData(archive(data));
+    public void setData (String data){
+        super.setData(archive(data));
     }
 
-    @Override
-    public String readData (){
-        return super.readData();
+    public String getData (){
+        return super.getData();
     }
 
     public String archive (String data){
-        return data + "csc";
+        return data + " + enc";
     }
 }

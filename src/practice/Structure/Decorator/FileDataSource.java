@@ -8,12 +8,12 @@ public class FileDataSource implements DataSource {
         this.name = name;
     }
 
-    public void writeData (String data){
-        System.out.println("Write" + data);
+    public void setData (String data){
+        System.out.println("Write data: " + data);
         this.data = data;
 
     }
-    public String readData (){
+    public String getData (){
         return data;
     }
 }

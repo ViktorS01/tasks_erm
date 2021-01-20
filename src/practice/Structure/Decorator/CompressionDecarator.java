@@ -1,19 +1,21 @@
 package practice.Structure.Decorator;
 
 public class CompressionDecarator extends DataSourceDecarator{
-    @Override
-    public void writeData (String data){
-        super.writeData(pack(data));
+
+    public CompressionDecarator (DataSource dataSource){
+        super(dataSource);
     }
 
-    @Override
-    public String readData (){
-        return super.readData();
+    public void setData (String data){
+        super.setData(pack(data));
+    }
 
+    public String getData (){
+        return super.getData();
     }
 
     public String pack (String data){
-        return data + "csc";
+        return data + " + comp";
     }
 
 }

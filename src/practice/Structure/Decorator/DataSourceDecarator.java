@@ -8,13 +8,11 @@ public class DataSourceDecarator implements DataSource{
         this.dataSource = dataSource;
     }
 
-    public DataSourceDecarator() {
+    public void setData (String data){
+        dataSource.setData(data);
     }
 
-    public void writeData (String data){
-        dataSource.writeData(data);
-    }
-    public String readData (){
-        return dataSource.readData();
+    public String getData (){
+        return dataSource.getData();
     }
 }

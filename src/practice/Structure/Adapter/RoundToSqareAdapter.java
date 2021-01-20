@@ -8,6 +8,7 @@ public class RoundToSqareAdapter extends RoundPeg {
     public RoundToSqareAdapter(SqarePeg peg) {
         this.peg = peg;
     }
+
     @Override
     public double getRadius(){
         return (sqrt(2)*(peg.width)) / 2;

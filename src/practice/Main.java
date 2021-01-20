@@ -1,5 +1,6 @@
 package practice;
 
+import practice.Behavioral.ChainOfResponsibility.*;
 import practice.Behavioral.Command.*;
 import practice.Behavioral.Iterator.Classs;
 import practice.Behavioral.Iterator.Ork;
@@ -24,19 +25,29 @@ import practice.Behavioral.TamplateMethod.B;
 import practice.Behavioral.TamplateMethod.C;
 import practice.Behavioral.Visitor.*;
 import practice.Creational.AbstractFactory.*;
-import practice.Creational.Builder.Car;
-import practice.Creational.Builder.CarBuilder;
-import practice.Creational.Builder.Director;
+import practice.Creational.Builder.*;
 import practice.Creational.FactoryMethod.Dialog;
+import practice.Creational.FactoryMethod.WebDialog;
 import practice.Creational.FactoryMethod.WindowsDialog;
 import practice.Creational.Clone.Point;
 import practice.Creational.Singleton.Singleton;
 import practice.Structure.Adapter.*;
+import practice.Structure.Bridge.Kia;
+import practice.Structure.Bridge.Sedan;
 import practice.Structure.Composite.Circle;
 import practice.Structure.Composite.CompoundGraphic;
 import practice.Structure.Composite.Dot;
 import practice.Structure.Decorator.*;
 import practice.Structure.Facade.Facade;
+import practice.Structure.FlyWeight.Shape;
+import practice.Structure.FlyWeight.ShapeFactory;
+import practice.Structure.Proxy.Image;
+import practice.Structure.Proxy.ProxyImage;
+import practice.Structure.Proxy.RealImage;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Main {
 
@@ -57,20 +68,25 @@ public class Main {
         hole.fits(adapter);
 
         //decorator
-        String name = "ads";
-        String data = "sdfsd";
-        FileDataSource fileDataSource = new FileDataSource(name);
-        fileDataSource.writeData(data);
+        String name = "dataName";
+        String data = "data";
 
-        DataSourceDecarator enc = new EncryptionDecarator(new FileDataSource(name));
-        enc.writeData(data);
-        DataSource dataSource = new FileDataSource(name);
-        dataSource.writeData(data);
+        DataSource fileDataSource = new FileDataSource(name);
+        fileDataSource.setData(data);
 
-        System.out.println(dataSource.readData());
-        System.out.println(enc.readData());
+        DataSource dataSourceDecarator1 = new EncryptionDecarator(new FileDataSource(name));
+        dataSourceDecarator1.setData(data);
+
+        DataSource dataSourceDecarator2 = new CompressionDecarator(new FileDataSource(name));
+        dataSourceDecarator2.setData(data);
+
+        System.out.println(fileDataSource.getData());
+        System.out.println(dataSourceDecarator1.getData());
+        System.out.println(dataSourceDecarator2.getData());
 
         //Proxy
+        Image image = new ProxyImage("src:/dsfds/dsfsd.jpg");
+        image.display();
 
         //Composite
         Circle cir = new Circle(3,4,5);
@@ -87,11 +103,13 @@ public class Main {
 
         //Creational pattern
         //Factory Method
-        Dialog dialog;
-        dialog = new WindowsDialog();
+        Dialog dialog = new WindowsDialog();
         dialog.render();
 
-        //Abstract Method
+        Dialog dialog1 = new WebDialog();
+        dialog1.render();
+
+        //Abstract Factory Method
         CheckBox checkBox;
         Button button;
         GUIFactory guiFactory = new MacFactory();
@@ -109,6 +127,11 @@ public class Main {
         Car car = carBuilder.getResult();
         System.out.println(car);
 
+        HouseBuilder houseBuilder = new HouseBuilder();
+        director.makeHouse(houseBuilder);
+        House house = houseBuilder.getResult();
+        System.out.println(house);
+
         //Prototype (clone)
         Point point = new Point(2,3);
         Point point1 = point.clone();
@@ -122,20 +145,16 @@ public class Main {
         //Behavior pattern
         //Command
         Comp comp = new Comp();
-        Command power = new CommandPower(comp);
-        Command wot = new CommandOnWOT(comp);
-        Command mes = new CommandKostyaMes(comp);
-        User user = new User(mes,wot,power);
-
+        User user = new User(new CommandPower(comp), new CommandOnWOT(comp), new CommandKostyaMes(comp));
         user.message();
         user.WOT();
         user.vkl();
+
         CommandHistory history = new CommandHistory();
-        history.push(power);
-        history.push(power);
-        history.push(wot);
-        history.push(mes);
-        System.out.println(history.toString());
+        history.push(new CommandPower(comp));
+        history.push(new CommandPower(comp));
+        history.push(new CommandOnWOT(comp));
+        history.push(new CommandKostyaMes(comp));
 
         //iterator
         Ork kostya = new Ork("Kostya");
@@ -227,6 +246,37 @@ public class Main {
 
         Element carDet = new CarDetails();
         carDet.accept(meh);
+
+        //ChainOfResponsibility
+        SMSLogger logger0 = new SMSLogger(Level.ERROR);
+        FileLogger fileLogger1 = new FileLogger(Level.DEBUG);
+        EmailLogger emailLogger2 = new EmailLogger(Level.INFO);
+        logger0.next(fileLogger1);
+        fileLogger1.next(emailLogger2);
+
+        logger0.writeMessage("Error", Level.ERROR);
+        logger0.writeMessage("DEBUG!!", Level.DEBUG);
+        logger0.writeMessage("INFO", Level.INFO);
+
+
+        //Bridge
+        practice.Structure.Bridge.Car car123 = new Sedan(new Kia());
+        car123.showDetails();
+
+        //FlyWeight
+        ShapeFactory shapeFactory = new ShapeFactory();
+        List<Shape> shapes = new ArrayList<>();
+        shapes.add(shapeFactory.getShape("круг"));
+        shapes.add(shapeFactory.getShape("квадрат"));
+        shapes.add(shapeFactory.getShape("точка"));
+        shapes.add(shapeFactory.getShape("квадрат"));
+        shapes.add(shapeFactory.getShape("точка"));
+        shapes.add(shapeFactory.getShape("круг"));
+
+        Random random = new Random();
+        for(Shape x: shapes){
+            x.draw(random.nextInt(100), random.nextInt(100));
+        }
 
 
     }

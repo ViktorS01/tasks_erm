@@ -16,11 +16,4 @@ public class CommandHistory {
     public boolean isEmpty (){
         return stack.isEmpty();
     }
-
-    @Override
-    public String toString() {
-        return "CommandHistory{" +
-                "stack=" + stack.toString() +
-                '}';
-    }
 }

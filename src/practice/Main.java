@@ -44,6 +44,16 @@ import practice.Structure.FlyWeight.ShapeFactory;
 import practice.Structure.Proxy.Image;
 import practice.Structure.Proxy.ProxyImage;
 import practice.Structure.Proxy.RealImage;
+import practice.Tasks.AbstractFabric.ElfFabric;
+import practice.Tasks.AbstractFabric.Fabric;
+import practice.Tasks.AbstractFabric.Heroy;
+import practice.Tasks.Chain.*;
+import practice.Tasks.Command.CommandDateNow;
+import practice.Tasks.Command.CommandPrintHello;
+import practice.Tasks.Strategy.Behavior;
+import practice.Tasks.Strategy.Sheep;
+import practice.Tasks.Strategy.Wolf;
+import practice.Tasks.TaskErm.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -277,6 +287,47 @@ public class Main {
         for(Shape x: shapes){
             x.draw(random.nextInt(100), random.nextInt(100));
         }
+
+        practice.Tasks.Strategy.Strategy strategy1 = new practice.Tasks.Strategy.Strategy(new Wolf(), new Sheep());
+        strategy1.summer();
+        //strategy1.winter();
+
+        practice.Tasks.Command.User user1 = new practice.Tasks.Command.User(new CommandDateNow(), new CommandPrintHello());
+        user1.toDo("date","now");
+        user1.toDo("print","hello");
+
+        War solder = new Solder("a", 16, 48);
+        War solder1 = new Solder("b", 12,100);
+        War solder2 = new Solder("c", 99,76);
+        Generate generate = new Generate(solder);
+        solder = generate.upgrade();
+        solder.getUnit();
+        Composite composite = new Composite();
+        composite.add(solder);
+        composite.add(solder1);
+        composite.add(solder2);
+        composite.getHit(12);
+        composite.Shoot();
+        composite.walk();
+
+
+        Otdel decanat = new Decanat();
+        Otdel pfu = new PFU();
+        Otdel safeOtdel = new SafeOtdel();
+        Otdel otdelKadrov = new OtdelKadrov();
+        Otdel rektor = new Rektor();
+
+        decanat.next(pfu);
+        pfu.next(safeOtdel);
+        safeOtdel.next(otdelKadrov);
+        otdelKadrov.next(rektor);
+        rektor.next(null);
+
+        decanat.toDo("fff");
+
+        Fabric fabric = new ElfFabric();
+        Heroy elf = fabric.createBoyBigDistantion();
+        elf.say();
 
 
     }

@@ -4,15 +4,15 @@ import ru.sychev.animals.Cat;
 
 public class CalMeow implements CatsMeow{
     int resMeow = 0;
-    public CatsMeow asd;
+    public CatsMeow catsMeow;
 
     public CalMeow (CatsMeow cat){
-        this.asd = cat;
+        this.catsMeow = cat;
     }
 
     @Override
     public void say() {
-        asd.say();
+        catsMeow.say();
         resMeow++;
     }
 

@@ -1,7 +1,6 @@
 package practice.Structure.Decorator;
 
 public class CompressionDecarator extends DataSourceDecarator{
-
     public CompressionDecarator (DataSource dataSource){
         super(dataSource);
     }
@@ -17,5 +16,4 @@ public class CompressionDecarator extends DataSourceDecarator{
     public String pack (String data){
         return data + " + comp";
     }
-
 }

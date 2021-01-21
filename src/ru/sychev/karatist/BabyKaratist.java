@@ -24,6 +24,12 @@ public class BabyKaratist {
     public void kick (){
         System.out.println("Тыц!");
     }
+    public void kick2 (){
+        System.out.println("Бумс!");
+    }
+    public void kick3 (){
+        System.out.println("Бабах!");
+    }
 
     public List<Combo> getComboList() {
         return comboList;

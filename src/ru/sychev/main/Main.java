@@ -48,8 +48,6 @@ public class Main {
 
 
         //11.4
-
-                Cat br = new Cat("Bobby");
                 Cat ar = new Cat("Vasya");
                 CalMeow cal = new CalMeow(ar);
                 System.out.println(cal.getResMeow());

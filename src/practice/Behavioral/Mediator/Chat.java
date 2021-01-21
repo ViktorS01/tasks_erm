@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chat implements Mediator{
-
     Admin admin;
     List<Userr> users = new ArrayList<>();
 
@@ -12,7 +11,6 @@ public class Chat implements Mediator{
         for (Userr x: users){
             x.getMessage(message);
         }
-
         admin.getMessage(message);
     }
 

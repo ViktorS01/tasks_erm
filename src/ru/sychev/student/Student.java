@@ -6,10 +6,9 @@ import java.util.*;
 
 public class Student <T>{
     private String name;
+    private String name1;
     private Checker<T> ch;
     private List rates = new ArrayList();
-
-    private Stack forRating = new Stack();
 
     private Deque <Action> hist = new ArrayDeque<>();
 
@@ -28,30 +27,50 @@ public class Student <T>{
     public void setRating(List<T> rating, Checker<T> ch) {
         for (int i = 0; i < rating.size(); i++) {
             if (!ch.check(rating.get(i))) throw new IllegalArgumentException("incorrect rating");
-            forRating.push(rating);
+            rates.add(rating);
         }
     }
 
-    public void addRating (T...rating){
-        for(T p: rating)
-            this.forRating.push(p);
+    public void addRating (T rating){
+            if (!ch.check(rating)) throw new IllegalArgumentException("incorrect rating");
+            rates.add(rating);
+            hist.push(()->rates.remove(rates.size()-1));
     }
 
-    public Stack getRating() {
-        return forRating;
+    public  void setName (String name){
+        String name1 = this.name;
+        hist.push(()->this.name = name1);
+        this.name = name;
+    }
+
+    public List getRating() {
+        return rates;
     }
 
     public String toString() {
-        if (this.forRating.empty() == true) {
+        if (this.rates == null) {
             return this.name + ": Средняя оценка: 0";
         } else {
-            return this.name + ": " + forRating.toString(); //+ ", "+ "Средняя оценка: ";// + getAverage(rating) + excellent_student_check(rating);
+            return this.name + ": " + rates.toString(); //+ ", "+ "Средняя оценка: ";// + getAverage(rating) + excellent_student_check(rating);
         }
     }
 
-    public  void undo(){
-        forRating.pop();
+    public void undo(){
+        hist.pop().action();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private class Memento implements Save{
         String name;
